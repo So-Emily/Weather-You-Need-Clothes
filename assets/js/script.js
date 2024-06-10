@@ -26,6 +26,7 @@ searchBtn.addEventListener("click", handleSearchSubmit)
 
 
 
+// NEW CODE
 // Images for clothes 
 // API = https://serpapi.com/google-images-api
 
