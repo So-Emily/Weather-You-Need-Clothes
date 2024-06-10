@@ -26,57 +26,47 @@ searchBtn.addEventListener("click", handleSearchSubmit)
 
 
 
-// NEW CODE
-// Images for clothes 
-// API = https://serpapi.com/google-images-api
+// NEW EMILY CODE
+// Google Images Restults API
+// Google API: https://serpapi.com/images-results
 
+const searchQueryClothes = document.querySelector("#search-input-clothes"); 
 const searchBtnClothes = document.querySelector("#search-btn-clothes");
-const searchInputClothes = document.querySelector("#search-input");
-const apiKeyClothes = 'e2af61f71a0bb4b2a25dfb63bb2908098ab855b434ed712b45c48e56c44c97f6'; // replace with your API key
-const cx = '07784ff1f36c3448f'; // replace with your Custom Search Engine ID
-
-searchBtnClothes.addEventListener('click', function() {
-    const searchQuery = `inurl:${searchInputClothes.value}`; // get value from input field;
-    
-    
-
-    fetch(`https://www.googleapis.com/customsearch/v1?key=${apiKeyClothes}&cx=${cx}&q=${searchQuery}`)
-        .then(response => response.json())
-        .then(data => {
-            // handle the data here
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-});
 
 function handleSearchSubmitClothes() {
-    const clothes = searchInputClothes.value
-    if (!clothes) return
-    fetchClothes(clothes)
-    searchInputClothes.value = ""
-}
+    const searchQuery = searchQueryClothes.value;
+    if (!searchQuery) return;
+    const apiUrl = `https://serpapi.com/search.json?q=${searchQuery}&engine=google_images&ijn=0&api_key=e2af61f71a0bb4b2a25dfb63bb2908098ab855b434ed712b45c48e56c44c97f6`;
 
-function fetchClothes(clothes) {
-    const apiUrlClothes = `https://serpapi.com/search?engine=google_images&api_key=${apiKeyClothes}&q=${clothes}`
-    fetch(apiUrlClothes).then(res => res.json()).then(data => {
-        console.log(data)
-        displayClothes(data)
+    fetch(`https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cx}&q=${searchQuery}`)
+    .then(response => response.json())
+    .then(data => {
+        console.log('Data:', data); // log the data
+        displaySearchResults(data);
     })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+    searchQueryClothes.value = "";
 }
 
-function displayClothes(data) {
-    const clothesDiv = document.querySelector("#clothes");
-    clothesDiv.innerHTML = ""; 
+function displaySearchResults(data) {
+    console.log('Displaying search results'); // log when this function is called
+    
+    // Display the search results on the page using the "clothes" id
+    const clothesContainer = document.querySelector("#clothes");
+    // Clear previous results
+    clothesContainer.innerHTML = "";
 
-    if (data.images_results) {
-        data.images_results.forEach(image => {
-            const img = document.createElement("img");
-            img.src = image.thumbnail;
-            clothesDiv.appendChild(img);
-        });
-    }
+    // Loop through the search results and create HTML elements to display them
+    data.images_results.forEach(result => {
+        const img = document.createElement("img");
+        img.src = result.original;
+        clothesContainer.appendChild(img);
+    });
 }
 
-searchBtnClothes.addEventListener("click", handleSearchSubmitClothes)
+searchBtnClothes.addEventListener("click", handleSearchSubmitClothes);
+
+
+
