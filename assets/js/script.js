@@ -30,8 +30,6 @@ function displayWeather(data) {
 searchBtn.addEventListener("click", handleSearchSubmit)
 
 
-// If statement to use as glue
-
 // Start of Clothes API
 // --------------------------------------------------------------------------->
 const options = {
