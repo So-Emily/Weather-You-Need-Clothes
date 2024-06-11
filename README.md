@@ -1,5 +1,10 @@
 # Weather Drip
 
+## Description
+A weather app that depending on the temperature of the city you are looking at it recommends clothes for that weather.
+
+Used by people going on vacation to help know what to pack
+
 ## User Story
 
 AS A tourist
