@@ -17,10 +17,22 @@ function fetchWeather(city) {
 function displayWeather(data) {
     document.querySelector("#city-name").textContent = data.name
     document.querySelector("#temp").textContent = data.main.temp
+
+    if (data.main.temp >= 90) {
+        console.log("Too Hot to wear clothes")
+    } else if (data.main.temp <= 90 && data.main.temp >= 75) {
+        console.log("Perfect weather to wear tank top")
+    } else if (data.main.temp <= 75 && data.main.temp >= 50) {
+        console.log("Perfect weather to wear a sweater")
+    } else if (data.main.temp <= 50 && data.main.temp >= 32) {
+        console.log("Perfect weather to wear a jacket")
+    } else {
+        console.log("Too cold to wear clothes")
+    }
+    
 }
 searchBtn.addEventListener("click", handleSearchSubmit)
 
-// If statement to use as glue
 
 // --------------------------------------------------------------------------->
 
@@ -43,6 +55,7 @@ function displayClothes(data){
     document.querySelector("#clothes").textContent = data.name
 // A loop over data.response.docs
 }
+
 
 
 
