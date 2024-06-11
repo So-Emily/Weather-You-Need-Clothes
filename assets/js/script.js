@@ -19,17 +19,14 @@ function displayWeather(data) {
     document.querySelector("#temp").textContent = data.main.temp
 }
 searchBtn.addEventListener("click", handleSearchSubmit)
-
 // If statement to use as glue
-
 // --------------------------------------------------------------------------->
-
 const options = {
-	method: 'GET',
-	headers: {
-		'x-rapidapi-key': '6a23a64c91mshed64ee6d1f4bfaep1f7c39jsn1eeb76e2d677',
-		'x-rapidapi-host': 'apidojo-forever21-v1.p.rapidapi.com'
-	}
+    method: 'GET',
+    headers: {
+        'x-rapidapi-key': '6a23a64c91mshed64ee6d1f4bfaep1f7c39jsn1eeb76e2d677',
+        'x-rapidapi-host': 'apidojo-forever21-v1.p.rapidapi.com'
+    }
 };
 function fetchClothes(clothes,gender){
     const apiUrlClothes = `https://apidojo-forever21-v1.p.rapidapi.com/products/search?query=${clothes}&rows=20&start=0&gender=${gender}`;
@@ -43,6 +40,3 @@ function displayClothes(data){
     document.querySelector("#clothes").textContent = data.name
 // A loop over data.response.docs
 }
-
-
-
