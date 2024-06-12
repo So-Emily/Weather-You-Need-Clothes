@@ -1,3 +1,4 @@
+// Weather Api and Input
 const apiKey = "7ab439372a6b7834b1058543aced3bee"
 const searchInput = document.querySelector("#search-input")
 const searchBtn = document.querySelector("#search-btn")
@@ -23,6 +24,7 @@ function renderCityHistory() {
     }
 renderCityHistory()
 
+// Function to handle the search submit
 function handleSearchSubmit() {
     event.preventDefault();
     const city = searchInput.value
@@ -31,6 +33,7 @@ function handleSearchSubmit() {
     searchInput.value = ""
 }
 
+// Function to fetch the weather data
 function fetchWeather(city) {
     const apiUrlWeather = `https://api.openweathermap.org/data/2.5/weather?appid=${apiKey}&q=${city}&units=imperial`
     fetch(apiUrlWeather)
@@ -56,10 +59,13 @@ function fetchWeather(city) {
     });
 }
 
+// Function to display the weather data
 function displayWeather(data) {
     const temp = data.main.temp
     document.querySelector("#city-name").textContent = data.name
     document.querySelector("#temp").textContent = temp 
+  
+    // If statements for the different temperatures per city 
     if (temp >= 90) {
         // Loops for specific clothes depending on the temperature - Hot
 
@@ -70,11 +76,13 @@ function displayWeather(data) {
         console.log("Perfect weather to wear tank top")
     } else if (temp <= 75 && temp>= 50) {
         // Loops for specific clothes depending on the temperature  - Cool
-fetchClothes("top,shorts")
+        fetchClothes("top,shorts")
+      
         console.log("Perfect weather to wear a sweater")
     } else if (temp <= 50 && temp>= 32) {
         // Loops for specific clothes depending on the temperature - Cold
-fetchClothes ("jacket")
+        fetchClothes ("jacket")
+
         console.log("Perfect weather to wear a jacket")
     } else {
         // Loops for specific clothes depending on the temperature - Very Cold
@@ -84,11 +92,12 @@ fetchClothes ("jacket")
     
 }
 
+// Event listener for the search button
 searchBtn.addEventListener("click", handleSearchSubmit)
-
 
 // Start of Clothes API
 // --------------------------------------------------------------------------->
+// Getting the clothes API
 const options = {
     method: 'GET',
     headers: {
@@ -96,8 +105,11 @@ const options = {
         'x-rapidapi-host': 'apidojo-forever21-v1.p.rapidapi.com'
     }
 };
+
+// Function to fetch the clothes data from the API
 function fetchClothes(clothes, gender) {
     const apiUrlClothes = `https://apidojo-forever21-v1.p.rapidapi.com/products/search?query=${clothes}&rows=20&start=0`;
+
     fetch(apiUrlClothes, options)
         .then(res => res.json())
         .then(data => {
@@ -109,6 +121,7 @@ function fetchClothes(clothes, gender) {
         });
 }
 
+// Function to display the clothes
 function displayClothes(data) {
     console.log(data);
     document.querySelector("#clothes-cards").innerHTML = "";
@@ -139,5 +152,4 @@ function displayClothes(data) {
     // A loop over data.response.docs
 }
 
-// --------------------------------------------------------------------------->
-
+// End of Clothes API
