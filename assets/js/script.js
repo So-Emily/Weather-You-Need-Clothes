@@ -42,7 +42,6 @@ function displayWeather(data) {
 
 searchBtn.addEventListener("click", handleSearchSubmit)
 
-
 // Start of Clothes API
 // --------------------------------------------------------------------------->
 const options = {
@@ -53,20 +52,36 @@ const options = {
     }
 };
 
-function fetchClothes(clothes,gender){
+function fetchClothes(clothes, gender) {
     const apiUrlClothes = `https://apidojo-forever21-v1.p.rapidapi.com/products/search?query=${clothes}&rows=20&start=0&gender=${gender}`;
-    
-    fetch(apiUrlClothes,options).then(res => res.json()).then(data => {
-        console.log(data)
-        displayClothes(data)
-    })
+
+    fetch(apiUrlClothes, options)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            displayClothes(data);
+        })
+        .catch(error => {
+            console.log('There was a problem with the fetch operation: ' + error.message);
+        });
 }
 
-fetchClothes ("jacket","Mens")
-function displayClothes(data){
-    document.querySelector("#clothes").textContent = data.name
-// A loop over data.response.docs
+fetchClothes("jacket", "Mens");
+
+function displayClothes(data) {
+    console.log(data);
+    for (let i = 0; i < data.response.docs.length; i++) {
+        console.log(data.response.docs[i]);
+        // Loop through titles
+        const clothesElement = document.createElement("p");
+        clothesElement.textContent = data.response.docs[i].title;
+        document.querySelector("#clothes").appendChild(clothesElement);
+        // Loop through images
+        const clothesImage = document.createElement("img");
+        clothesImage.src = data.response.docs[i].thumb_image;
+        document.querySelector("#clothes").appendChild(clothesImage);
+        
+    }
+    // document.querySelector("#clothes").textContent = data.name
+    // A loop over data.response.docs
 }
-
-// --------------------------------------------------------------------------->
-
