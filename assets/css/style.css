@@ -1,0 +1,76 @@
+/* CSS styles for the Weather-You-Need-Clothes project */
+/* Defaults - Font */
+* {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+/* Styling the Main Title */
+h1 {
+    font-size: 2.2em;
+    text-decoration: underline;
+    padding: 5px;
+
+}
+
+/* Styling the whole header square up until the city wear text */
+header {
+    border: 2px solid black;
+}
+
+/* Centering the submit input and box */
+#search-input,
+#search-btn{
+    display: block;
+    margin: 5px auto;
+}
+
+/* Styling the search button and search placeholder */
+#search-input {
+    padding: 5px;
+    width: 25%;
+    margin-top: 1%;
+    font-size: 1em;
+}
+
+#search-input::placeholder {
+    text-align: center;
+}
+
+/* Styling the Submit button - maybe we should add an api to make the buttons look nicer */
+#search-btn {
+    padding: 5px;
+    width: 6%;
+    margin-top: .5%;
+    font-size: 1em;
+}
+
+
+/* Centering the city, weather, and temperature elements */
+#city-name,
+#temp,
+#weather-text, h1, h2, h3, #city-history {
+    text-align: center;
+    margin-top: 2%;
+}
+
+/* Flexing the display weather clothes cards - all cards together */
+#clothes-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 1px solid black;
+    
+}
+
+/*Drop down / Draggable would be added to these?  */
+
+/* Styling for the individual clothes cards */
+#clothes-cards div {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+    width: 20%;
+}
+
