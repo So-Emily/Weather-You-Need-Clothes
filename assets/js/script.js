@@ -67,7 +67,7 @@ function fetchWeather(city) {
 function displayWeather(data) {
     const temp = data.main.temp
     document.querySelector("#city-name").textContent = data.name
-    document.querySelector("#temp").textContent = temp + "°F";
+    document.querySelector("#temp").textContent = temp + "°F"
   
     // If statements for the different temperatures per city 
     if (temp >= 90) {
@@ -122,7 +122,12 @@ searchBtn.addEventListener("click", handleSearchSubmit)
 const options = {
     method: 'GET',
     headers: {
-        'x-rapidapi-key': '6a23a64c91mshed64ee6d1f4bfaep1f7c39jsn1eeb76e2d677',
+        //Em's API key
+        'x-rapidapi-key': 'a863cfc92dmsh5dbeb6496c2f7c8p1ab1a6jsn8462959244b0',
+
+        //Alfonso's API key - ran out of runs xD
+        // 'x-rapidapi-key': '6a23a64c91mshed64ee6d1f4bfaep1f7c39jsn1eeb76e2d677',
+
         'x-rapidapi-host': 'apidojo-forever21-v1.p.rapidapi.com'
     }
 };

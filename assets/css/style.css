@@ -1,13 +1,20 @@
 /* CSS styles for the Weather-You-Need-Clothes project */
+/* Defaults - Font */
 * {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 /* Styling the Main Title */
 h1 {
-    font-size: 2em;
+    font-size: 2.2em;
     text-decoration: underline;
     padding: 5px;
+
+}
+
+/* Styling the whole header square up until the city wear text */
+header {
+    border: 2px solid black;
 }
 
 /* Centering the submit input and box */
@@ -21,7 +28,7 @@ h1 {
 #search-input {
     padding: 5px;
     width: 25%;
-    margin-top: 1.5%;
+    margin-top: 1%;
     font-size: 1em;
 }
 
@@ -32,7 +39,7 @@ h1 {
 /* Styling the Submit button - maybe we should add an api to make the buttons look nicer */
 #search-btn {
     padding: 5px;
-    width: 5%;
+    width: 6%;
     margin-top: .5%;
     font-size: 1em;
 }
