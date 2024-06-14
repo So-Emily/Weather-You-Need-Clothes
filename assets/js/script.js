@@ -80,7 +80,7 @@ function displayWeather(data) {
 
     } else if (temp <= 90 && temp >= 75) {
         // Loops for specific clothes depending on the temperature  - Warm
-        fetchClothes(["tops", "sandals", "shorts", "dresses", "skirts", "swimwear", "rompers", "sunscreen"])
+        fetchClothes(["tops", "Sunglasses", "sandals", "shorts", "dresses", "skirts", "swimwear", "rompers", "sunscreen"])
 
         // Display weather console text
         document.querySelector("#weather-text").textContent = "Perfect weather to wear a tank top, shorts, and sandals";
@@ -88,7 +88,7 @@ function displayWeather(data) {
 
     } else if (temp <= 75 && temp>= 50) {
         // Loops for specific clothes depending on the temperature  - Cool
-        fetchClothes(["longsleeves","shorts", "sweater", "boots", "scarf", "beanie", "coat", "long sleeve shirt"])
+        fetchClothes(["Long Sleeve","shorts", "sweater", "boots", "scarf", "beanie", "coat", "Blazer"])
       
         // Display weather console text
         document.querySelector("#weather-text").textContent = "Perfect weather to wear a sweater and shorts";
@@ -96,7 +96,7 @@ function displayWeather(data) {
 
     } else if (temp <= 50 && temp>= 32) {
         // Loops for specific clothes depending on the temperature - Cold
-        fetchClothes (["jacket", "sweater", "boots", "scarf", "gloves", "beanie", "coat", "long sleeve shirt"])
+        fetchClothes (["jacket", "Sweater", "boots", "scarf", "gloves", "beanie", "coat", "Long-Sleeve", "Joggers"])
 
         // Display weather console text
         document.querySelector("#weather-text").textContent = "Perfect weather to wear jackets, jeans and sweaters";
