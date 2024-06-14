@@ -4,43 +4,50 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        
-
         <!-- Linking the Files and outside API Bulma --> 
-        <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.0/css/bulma.min.css"> -->
+        <!-- <link href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css" rel="stylesheet"> -->
+
+        <!-- Trying out https://materializecss.com/ -->
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        
+        <!-- Default CSS -->
         <link rel="stylesheet" href="assets/css/style.css">
-        <script defer src="assets/js/script.js"></script>
-       
+        
         <title>City Weather</title>
     </head>
         <body>
             <header id="head">
                 
                 <!-- search box for weather -->
-                <h1>Weather Drip</h1><br>
+                <h2>Weather Drip</h2><br>
                 
-                <input type="text" id="search-input" placeholder="What City Are you Packing For?">
-                <button id="search-btn">Submit</button>
-                <h2 id="city-name"></h2>
-                <h2 id="temp"></h2>
+                <input type="text" id="search-input" class="center-text" placeholder="What City Are you Packing For?">
+                <button id="search-btn" class="waves-effect waves-light btn">Submit</button>
+                <h3 id="city-name"></h3>
+                <h3 id="temp"></h3>
 
                 <!-- maybe we can add, weekly weather, humidity, wind speed, etc. -->
 
-                <h2 id="weather-text"></h2><br>
+                <h3 id="weather-text"></h3><br>
 
             </header>    
 
-            <h2> Clothing for the City </h2>
+            <h4> Clothing for the City </h4>
             
             <div id="clothes">
                 <div id="clothes-cards"></div>
             </div> <br> <br> <br>
 
             <!-- Keeping history of cities enetered -->
-            <h3>City Search History</h3>
-            <div id= "city-history"><div>
+            <h5>City Search History</h5>
+            <div id= "city-history"><div><br>
             
-            <script defer src="assets/js/script.js"></script>
+            <!-- Compiled and minified JavaScript -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+            <!-- Default JS -->
+            <script src="assets/js/script.js"></script>
         </body>
        
 </html>

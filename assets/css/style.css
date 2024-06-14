@@ -5,11 +5,9 @@
 }
 
 /* Styling the Main Title */
-h1 {
-    font-size: 2.2em;
+h2 {
     text-decoration: underline;
     padding: 5px;
-
 }
 
 /* Styling the whole header square up until the city wear text */
@@ -26,31 +24,14 @@ header {
 
 /* Styling the search button and search placeholder */
 #search-input {
-    padding: 5px;
     width: 25%;
-    margin-top: 1%;
-    font-size: 1em;
 }
-
-#search-input::placeholder {
-    text-align: center;
-}
-
-/* Styling the Submit button - maybe we should add an api to make the buttons look nicer */
-#search-btn {
-    padding: 5px;
-    width: 6%;
-    margin-top: .5%;
-    font-size: 1em;
-}
-
 
 /* Centering the city, weather, and temperature elements */
 #city-name,
 #temp,
-#weather-text, h1, h2, h3, #city-history {
+#weather-text, h1, h2, h3, h4, h5, #city-history, .center-text, #search-input::placeholder {
     text-align: center;
-    margin-top: 2%;
 }
 
 /* Flexing the display weather clothes cards - all cards together */
@@ -58,8 +39,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    border: 1px solid black;
-    
+    /* border: 1px solid black; */
 }
 
 /*Drop down / Draggable would be added to these?  */
