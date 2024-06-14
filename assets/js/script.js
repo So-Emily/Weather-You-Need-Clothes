@@ -3,6 +3,16 @@ const searchInput = document.querySelector("#search-input")
 const searchBtn = document.querySelector("#search-btn")
 const cityHistory = JSON.parse(localStorage.getItem("cityHistory")) || []
 
+document.querySelector("#clear-history").addEventListener("click", function() {
+    cityHistory.length = 0;  // Clear the array
+    localStorage.setItem("cityHistory", JSON.stringify(cityHistory));  // Update the local storage
+    renderCityHistory();  // Update the UI
+});
+
+document.querySelector("#clear-btn").addEventListener("click", function() {
+    location.reload();
+});
+
 // Function to save the city
 function saveCity(city) {
     if (cityHistory.includes(city)) return
@@ -24,9 +34,17 @@ function renderCityHistory() {
             fetchWeather(cityHistory[i])
         })
         cityHistoryElement.appendChild(cityElement)
-    }
-    }
+    }}
+
 renderCityHistory()
+
+let historySection = document.getElementById('history-section');
+
+if (cityHistory.length > 0) {
+    historySection.style.display = 'block'; // Show the history section
+} else {
+    historySection.style.display = 'none'; // Hide the history section
+}
 
 // Function to handle the search submit
 function handleSearchSubmit() {
@@ -36,6 +54,12 @@ function handleSearchSubmit() {
     fetchWeather(city)
     searchInput.value = ""
 }
+
+document.getElementById('search-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    location.reload();
+    handleSearchSubmit();
+});
 
 // Function to fetch the weather data
 function fetchWeather(city) {
@@ -59,7 +83,8 @@ function fetchWeather(city) {
     })
     .catch(error => {
         console.log('There was a problem with the fetch operation: ' + error.message);
-        // alert("City not found")   potentially change into a modal
+        // alert("City not found")   
+        // potentially change into a modal
     });
 }
 
@@ -91,7 +116,7 @@ function displayWeather(data) {
         fetchClothes(["Long Sleeve","shorts", "sweater", "boots", "scarf", "beanie", "coat", "Blazer"])
       
         // Display weather console text
-        document.querySelector("#weather-text").textContent = "Perfect weather to wear a sweater and shorts";
+        document.querySelector("#weather-text").textContent = "Perfect weather to wear a t-shirt and shorts";
         console.log("Perfect weather to wear a long sleeve shirt and shorts")
 
     } else if (temp <= 50 && temp>= 32) {
@@ -171,9 +196,10 @@ function displayClothes(data) {
         // document.querySelector("#clothes").appendChild(clothesElement);
         // Create an image element
         const clothesImage = document.createElement("img");
-       
+
         clothesImage.src = data.response.docs[i].thumb_image;
-        
+        clothesImage.style.width = "100%";
+
         // Create a price element
         const clothesPrice = document.createElement("p");
         clothesPrice.textContent = "$" + data.response.docs[i].price;
@@ -187,10 +213,8 @@ function displayClothes(data) {
         // Append the elements to the card
         card.append(clothesElement, clothesImage, clothesPrice, urlElement);
         document.querySelector("#clothes-cards").appendChild(card);
-        
     }
-    // document.querySelector("#clothes").textContent = data.name
-    // A loop over data.response.docs
 }
 
 // End of Clothes API
+// --------------------------------------------------------------------------->

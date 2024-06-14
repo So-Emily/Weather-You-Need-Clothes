@@ -7,6 +7,11 @@
         <!-- Linking the Files and outside API Bulma --> 
         <!-- <link href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css" rel="stylesheet"> -->
 
+        <!-- Font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+
         <!-- Trying out https://materializecss.com/ -->
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -20,10 +25,16 @@
             <header id="head">
                 
                 <!-- search box for weather -->
-                <h2>Weather Drip</h2><br>
+                <h2 class="nosifer-regular">Weather Drip</h2><br>
                 
-                <input type="text" id="search-input" class="center-text" placeholder="What City Are you Packing For?">
-                <button id="search-btn" class="waves-effect waves-light btn">Submit</button>
+                <!-- Form Submit with Enter Button -->
+                <form id="search-form">
+                    <input type="text" id="search-input" class="center-text" placeholder="City or Zip">
+                    <button id="search-btn" class="waves-effect waves-light btn">Submit</button>
+                    <button id="clear-btn" class="waves-effect waves-light btn-small">Clear</button>
+                </form>
+
+                <!-- Display City and Weather -->
                 <h3 id="city-name"></h3>
                 <h3 id="temp"></h3>
 
@@ -38,10 +49,19 @@
             <div id="clothes">
                 <div id="clothes-cards"></div>
             </div> <br> <br> <br>
+            
+            <section id = "history-section">
+                <!-- Keeping history of cities entered -->
+                <section>
+                <h5>City Search History</h5>
+                <div id= "city-history"><div>
+                </section>
 
-            <!-- Keeping history of cities enetered -->
-            <h5>City Search History</h5>
-            <div id= "city-history"><div><br>
+                <!-- Clear Button -->   
+                <section id="clear-history">
+                    <button id="clear-button" class="waves-effect waves-light btn-small">Clear History</button>
+                </section>
+            </section>
             
             <!-- Compiled and minified JavaScript -->
             <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
