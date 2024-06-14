@@ -5,33 +5,47 @@
 }
 
 /* Styling the Main Title */
-h2 {
+.nosifer-regular {
+    font-family: "Nosifer", sans-serif;
+    font-weight: 400;
+    font-style: normal;
     text-decoration: underline;
+    text-decoration-color: rgb(27, 27, 27);
     padding: 5px;
-}
-
-/* Styling the whole header square up until the city wear text */
-header {
-    border: 2px solid black;
+    color: rgb(50, 172, 172);
 }
 
 /* Centering the submit input and box */
 #search-input,
-#search-btn{
+#search-btn, #clear-btn{
     display: block;
     margin: 5px auto;
 }
 
+#search-btn {
+    border-radius: 5px;
+}
+
+#clear-btn {
+    display: block;
+    margin: 5px auto;
+    padding: 0px 10px 5px 10px;
+    font-size: .9em;
+    border-radius: 5px;
+}
+
 /* Styling the search button and search placeholder */
 #search-input {
-    width: 25%;
+    width: 20%;
 }
 
 /* Centering the city, weather, and temperature elements */
-#city-name,
-#temp,
-#weather-text, h1, h2, h3, h4, h5, #city-history, .center-text, #search-input::placeholder {
+#city-name, #temp, #weather-text, h1, h2, h3, h4, h5, h6, #city-history, .center-text, #search-input::placeholder, #clear-history{
     text-align: center;
+}
+
+h4 {
+    text-decoration: underline;
 }
 
 /* Flexing the display weather clothes cards - all cards together */
@@ -42,8 +56,6 @@ header {
     /* border: 1px solid black; */
 }
 
-/*Drop down / Draggable would be added to these?  */
-
 /* Styling for the individual clothes cards */
 #clothes-cards div {
     margin: 10px;
@@ -51,6 +63,32 @@ header {
     border: 1px solid black;
     border-radius: 5px;
     text-align: center;
-    width: 20%;
+    /* max-width: 30%; */
 }
 
+#clear-history {
+    margin: 7px auto;
+    border-radius: 5px;
+}
+
+/*Drop down / Draggable would be added to these?  */
+
+@media screen and (max-width: 1000px) {
+    #clothes-cards div {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #clothes-cards div {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 400px)
+{
+    #clothes-cards div {
+        width: 100%;
+    }
+    
+}
