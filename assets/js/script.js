@@ -3,12 +3,14 @@ const searchInput = document.querySelector("#search-input")
 const searchBtn = document.querySelector("#search-btn")
 const cityHistory = JSON.parse(localStorage.getItem("cityHistory")) || []
 
+// Event listener for the clear history button
 document.querySelector("#clear-history").addEventListener("click", function() {
     cityHistory.length = 0;  // Clear the array
     localStorage.setItem("cityHistory", JSON.stringify(cityHistory));  // Update the local storage
     renderCityHistory();  // Update the UI
 });
 
+// Event listener for the clear button
 document.querySelector("#clear-btn").addEventListener("click", function() {
     location.reload();
 });
@@ -30,16 +32,18 @@ function renderCityHistory() {
     for (let i = 0; i < cityHistory.length; i++) {
         const cityElement = document.createElement("button")
         cityElement.textContent = cityHistory[i]
+        cityElement.className = "history-buttons";
         cityElement.addEventListener("click", function() {
             fetchWeather(cityHistory[i])
         })
         cityHistoryElement.appendChild(cityElement)
     }}
-
+// Call the renderCityHistory function
 renderCityHistory()
 
+// Get the history section
 let historySection = document.getElementById('history-section');
-
+// Check if the cityHistory array is empty
 if (cityHistory.length > 0) {
     historySection.style.display = 'block'; // Show the history section
 } else {
@@ -55,6 +59,7 @@ function handleSearchSubmit() {
     searchInput.value = ""
 }
 
+// Event listener for the search form
 document.getElementById('search-form').addEventListener('submit', function(event) {
     event.preventDefault();
     location.reload();
@@ -137,9 +142,9 @@ function displayWeather(data) {
     }
     
 }
-
 // Event listener for the search button
 searchBtn.addEventListener("click", handleSearchSubmit)
+
 
 // Start of Clothes API
 // --------------------------------------------------------------------------->

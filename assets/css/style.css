@@ -2,36 +2,43 @@
 /* Defaults - Font */
 * {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: rgb(252, 251, 251);
 }
 
 /* Styling the Main Title */
-.nosifer-regular {
+#nosifer-regular {
     font-family: "Nosifer", sans-serif;
     font-weight: 400;
     font-style: normal;
-    text-decoration: underline;
-    text-decoration-color: rgb(27, 27, 27);
     padding: 5px;
     color: rgb(50, 172, 172);
+    text-shadow: 1px 1px 1px rgb(27, 27, 27); 
+    text-decoration: underline;
+    text-decoration-color: rgb(27, 27, 27);
 }
 
-/* Centering the submit input and box */
-#search-input,
-#search-btn, #clear-btn{
+/* Class to center text and objects */
+.center-text {
+    text-align: center;
+}
+
+/* Editing the placeholder text */
+#search-input::placeholder {
+    color: rgb(27, 27, 27);
+}
+
+/* editing the buttons under the submit */
+#search-btn, #clear-btn {
     display: block;
     margin: 5px auto;
+    border-radius: 5px;    
+    text-shadow: 1px 1px 1px rgb(27, 27, 27);
 }
 
-#search-btn {
-    border-radius: 5px;
-}
-
+/* Adding CSS for the smaller clear button below submit */
 #clear-btn {
-    display: block;
-    margin: 5px auto;
-    padding: 0px 10px 5px 10px;
     font-size: .9em;
-    border-radius: 5px;
+    padding: 0px 10px 5px 10px;
 }
 
 /* Styling the search button and search placeholder */
@@ -39,11 +46,7 @@
     width: 20%;
 }
 
-/* Centering the city, weather, and temperature elements */
-#city-name, #temp, #weather-text, h1, h2, h3, h4, h5, h6, #city-history, .center-text, #search-input::placeholder, #clear-history{
-    text-align: center;
-}
-
+/* CSS to underline the city title above the clothes */
 h4 {
     text-decoration: underline;
 }
@@ -53,7 +56,6 @@ h4 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    /* border: 1px solid black; */
 }
 
 /* Styling for the individual clothes cards */
@@ -66,13 +68,25 @@ h4 {
     /* max-width: 30%; */
 }
 
-#clear-history {
-    margin: 7px auto;
+.history-buttons {
     border-radius: 5px;
+    align-items: center;
+    margin: 1.5px;
+    padding: 2px;
+    /* margin-bottom: 2px; */
+    background-color: rgb(255, 255, 255);
 }
 
-/*Drop down / Draggable would be added to these?  */
+/* Css for the clear button below the history buttons */
+#clear-h-button {
+    margin: 7px auto;
+    border-radius: 5px;
+    text-shadow: 1px 1px 1px rgb(27, 27, 27);
+    
+}
 
+
+/* Media Querie Styling */
 @media screen and (max-width: 1000px) {
     #clothes-cards div {
         width: 40%;

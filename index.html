@@ -21,30 +21,30 @@
         
         <title>City Weather</title>
     </head>
-        <body>
+        <body class="moving-background">
             <header id="head">
                 
                 <!-- search box for weather -->
-                <h2 class="nosifer-regular">Weather Drip</h2><br>
+                <h2 id="nosifer-regular" class="center-text">Weather Drip</h2><br>
                 
                 <!-- Form Submit with Enter Button -->
-                <form id="search-form">
+                <form id="search-form" class="center-text">
                     <input type="text" id="search-input" class="center-text" placeholder="City or Zip">
                     <button id="search-btn" class="waves-effect waves-light btn">Submit</button>
                     <button id="clear-btn" class="waves-effect waves-light btn-small">Clear</button>
                 </form>
 
                 <!-- Display City and Weather -->
-                <h3 id="city-name"></h3>
-                <h3 id="temp"></h3>
+                <h3 id="city-name" class="center-text"></h3>
+                <h3 id="temp" class="center-text"></h3>
 
                 <!-- maybe we can add, weekly weather, humidity, wind speed, etc. -->
 
-                <h3 id="weather-text"></h3><br>
+                <h3 id="weather-text" class="center-text"></h3><br>
 
             </header>    
 
-            <h4> Clothing for the City </h4>
+            <h4  class="center-text"> Clothing for the City </h4>
             
             <div id="clothes">
                 <div id="clothes-cards"></div>
@@ -53,13 +53,13 @@
             <section id = "history-section">
                 <!-- Keeping history of cities entered -->
                 <section>
-                <h5>City Search History</h5>
-                <div id= "city-history"><div>
+                <h5 class="center-text">City Search History</h5>
+                <div id= "city-history" class="center-text"><div>
                 </section>
 
                 <!-- Clear Button -->   
-                <section id="clear-history">
-                    <button id="clear-button" class="waves-effect waves-light btn-small">Clear History</button>
+                <section id="clear-history" class="center-text">
+                    <button id="clear-h-button" class="waves-effect waves-light btn-small">Clear History</button>
                 </section>
             </section>
             
@@ -69,5 +69,4 @@
             <!-- Default JS -->
             <script src="assets/js/script.js"></script>
         </body>
-       
 </html>
