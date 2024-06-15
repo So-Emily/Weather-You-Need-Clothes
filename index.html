@@ -3,9 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <!-- Linking the Files and outside API Bulma --> 
-        <!-- <link href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css" rel="stylesheet"> -->
 
         <!-- Font -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,11 +18,20 @@
         
         <title>City Weather</title>
     </head>
-        <body class="moving-background">
+        <body>
+            <!-- adding video background -->
+            <!-- default can be anything -->
+            <video autoplay muted loop id="myVideo" class="center-text">
+                <source src="assets/images/happy-sun.mp4" type="video/mp4">
+            </video>
+            
+            <!-- Header -->
             <header id="head">
                 
                 <!-- search box for weather -->
-                <h2 id="nosifer-regular" class="center-text">Weather Drip</h2><br>
+                <div class="center-text">
+                    <h2 id="nosifer-regular">Weather Drip</h2>
+                </div><br>
                 
                 <!-- Form Submit with Enter Button -->
                 <form id="search-form" class="center-text">
@@ -44,7 +50,11 @@
 
             </header>    
 
-            <h4  class="center-text"> Clothing for the City </h4>
+            <!-- Title above clothes align -->
+             <!-- this only displays when the clothes function runs -->
+            <div style="text-align: center" class="cl-title-hide">
+            <h4 id="clothes-title"> Clothing for the City </h4>
+            </div>
             
             <div id="clothes">
                 <div id="clothes-cards"></div>

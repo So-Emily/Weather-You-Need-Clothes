@@ -2,24 +2,50 @@
 /* Defaults - Font */
 * {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: rgb(252, 251, 251);
 }
 
-/* Styling the Main Title */
-#nosifer-regular {
-    font-family: "Nosifer", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    padding: 5px;
-    color: rgb(50, 172, 172);
-    text-shadow: 1px 1px 1px rgb(27, 27, 27); 
-    text-decoration: underline;
-    text-decoration-color: rgb(27, 27, 27);
+/* CSS for the background videos */
+#myVideo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: auto;
+    z-index: -1;
 }
 
 /* Class to center text and objects */
 .center-text {
     text-align: center;
+}
+
+/* Font for Title */
+#nosifer-regular {
+    font-family: "Nosifer", sans-serif;
+    font-weight: 400;
+    background-color: rgba(252, 250, 250, 0.6); /* semi-transparent white */
+}
+
+/* Styling the Main Title */
+#nosifer-regular, h4 {
+    font-style: normal;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 5px;
+    color: rgb(50, 172, 172);
+    text-shadow: 1px 1px 1px rgb(27, 27, 27); 
+    text-decoration: underline;
+    text-decoration-color: rgb(27, 27, 27);
+    border-radius: 5px;
+}
+
+/* clothes title hiding until function runs */
+.cl-title-hide {
+    display: none;
 }
 
 /* Editing the placeholder text */
@@ -46,11 +72,6 @@
     width: 20%;
 }
 
-/* CSS to underline the city title above the clothes */
-h4 {
-    text-decoration: underline;
-}
-
 /* Flexing the display weather clothes cards - all cards together */
 #clothes-cards {
     display: flex;
@@ -65,15 +86,16 @@ h4 {
     border: 1px solid black;
     border-radius: 5px;
     text-align: center;
+    background-color: rgb(255, 255, 255);
     /* max-width: 30%; */
 }
 
+/* Styling for the history buttons */
 .history-buttons {
     border-radius: 5px;
     align-items: center;
     margin: 1.5px;
     padding: 2px;
-    /* margin-bottom: 2px; */
     background-color: rgb(255, 255, 255);
 }
 
@@ -86,11 +108,22 @@ h4 {
 }
 
 
+/* ------------------------------------------------------------ */
 /* Media Querie Styling */
+@media screen and (max-width: 2200px) {
+    #myVideo {
+        position: fixed;
+        object-fit: cover;
+        z-index: -1;
+    }
+
+}
+
 @media screen and (max-width: 1000px) {
     #clothes-cards div {
         width: 40%;
     }
+
 }
 
 @media screen and (max-width: 600px) {
