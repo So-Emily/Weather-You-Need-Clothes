@@ -73,7 +73,6 @@ function fetchWeather(city) {
         .then(res =>{ 
             if (!res.ok) {
                 throw new Error("City not found")
-                
             }
             else {
                 saveCity(city)
@@ -84,13 +83,32 @@ function fetchWeather(city) {
             console.log(data)
             displayWeather(data)
             localStorage.setItem("weatherData", JSON.stringify(data));
-            // window.location.href = "drip.html"
-    })
-    .catch(error => {
-        console.log('There was a problem with the fetch operation: ' + error.message);
-        // alert("City not found")   
-        // potentially change into a modal
-    });
+
+            // Get the temperature from the data
+            const temperature = data.main.temp;
+
+            const weatherType = data.weather[0].main;
+            console.log(weatherType)
+
+            // Get the video element
+            const video = document.getElementById('myVideo');
+
+            // Change the video source based on the temperature
+            if (weatherType == 'Clouds') {
+                video.src = 'assets/images/clouds.mp4';
+            } else if (weatherType == 'Rain') {
+                video.src = 'assets/images/rainclouds.mp4';
+            } else {
+                video.src = 'assets/images/happy-sun.mp4';
+            }
+
+            // Load and play the new video
+            video.load();
+            video.play();
+        })
+        .catch(error => {
+            console.log('There was a problem with the fetch operation: ' + error.message);
+        });
 }
 
 // Function to display the weather data
@@ -98,10 +116,14 @@ function displayWeather(data) {
     const temp = data.main.temp
     document.querySelector("#city-name").textContent = data.name
     document.querySelector("#temp").textContent = temp + "°F"
-  
-    // If statements for the different temperatures per city 
+    
+    // Get clothes title element to display when clothes are shown
+    var div = document.getElementsByClassName('cl-title-hide')[0];
+
+    // // If statements for the different temperatures per city 
     if (temp >= 90) {
         // Loops for specific clothes depending on the temperature - Hot
+        div.style.display = 'block';
         fetchClothes(["tops", "shorts", "dresses", "skirts", "swimwear", "rompers", "sandals", "sunscreen"])
 
         // Display weather console text
@@ -110,6 +132,7 @@ function displayWeather(data) {
 
     } else if (temp <= 90 && temp >= 75) {
         // Loops for specific clothes depending on the temperature  - Warm
+        div.style.display = 'block';
         fetchClothes(["tops", "Sunglasses", "sandals", "shorts", "dresses", "skirts", "swimwear", "rompers", "sunscreen"])
 
         // Display weather console text
@@ -118,6 +141,7 @@ function displayWeather(data) {
 
     } else if (temp <= 75 && temp>= 50) {
         // Loops for specific clothes depending on the temperature  - Cool
+        div.style.display = 'block';
         fetchClothes(["Long Sleeve","shorts", "sweater", "boots", "scarf", "beanie", "coat", "Blazer"])
       
         // Display weather console text
@@ -126,19 +150,23 @@ function displayWeather(data) {
 
     } else if (temp <= 50 && temp>= 32) {
         // Loops for specific clothes depending on the temperature - Cold
+        div.style.display = 'block';
         fetchClothes (["jacket", "Sweater", "boots", "scarf", "gloves", "beanie", "coat", "Long-Sleeve", "Joggers"])
 
         // Display weather console text
         document.querySelector("#weather-text").textContent = "Perfect weather to wear jackets, jeans and sweaters";
         console.log("Perfect weather to wear jackets, jeans and sweaters")
+        
 
     } else {
         // Loops for specific clothes depending on the temperature - Very Cold
+        
         fetchClothes(["jacket", "sweater", "boots", "scarf", "gloves", "beanie", "coat", "long sleeve", "snow"])
 
         // Display weather console text
         document.querySelector("#weather-text").textContent = "Too cold to not wear clothes";
         console.log("Too cold to not wear clothes")
+        div.style.display = 'block';
     }
     
 }
