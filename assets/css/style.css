@@ -1,0 +1,47 @@
+:root {
+    overflow: hidden;
+    background-color: lightblue;
+    display: flex;
+    justify-content: center;
+  }
+  .dark-mode {
+    background-color: black;
+    color: white;
+}
+  .sun {
+    background-color: yellow;
+    border-radius: 50%;
+    height: 30vh;
+    aspect-ratio: 1 / 1;
+    transform: translateX(-50px);
+    animation: 7s linear 2s infinite alternate animating-multiple-properties;
+  }
+  
+  /* it is possible to animate multiple properties in a single animation */
+   @keyframes animating-multiple-properties {
+    from {
+      transform: translateY(110vh);
+      background-color: red;
+      filter: brightness(75%);
+    }
+    to {
+      transform: translateY(0);
+      background-color: orange;
+      /* unset properties i.e. 'filter' will revert to default values */
+    }
+  }
+/* .wrapper{
+    transform: translateY(-50vh);
+    animation: y-axis 5s infinite ease-in-out;
+}
+  @keyframes x-axis{
+    50%{
+        transform: translatex(600px);
+    }
+  }
+  @keyframes y-axis{
+    100% {
+        transfrom: translateY(200px);
+    }
+  } */
+

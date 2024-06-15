@@ -10,14 +10,33 @@
     <body>
         <!-- search box for weather -->
         <input type="text" id="search-input" placeholder="Enter a City">
-        <button id="search-btn">Submit</button>
+        <!-- <button type="submit">Submit</button> -->
+        <!-- <button type="submit" id="search-btn">Submit</button> -->
         <h2 id="city-name"></h2>
         <h2 id="temp"></h2> 
       
         <div id="clothes"></div>
-      
+
+        <div class="wrapper">
+        <div class="sun"></div>
+        </div>
+        <button id="search-btn">Submit</button>
+        <input type="reset" value="Reset">
+
         <!-- no more html needed is should all be created dynamically through js -->
-        
+        <style>
+
+        </style>
+        <div>
+            <button onclick="darkMode()">Darkmode</button>
+        </div>
+    
+        <script>
+            function darkMode() {
+                var element = document.body;
+                element.classList.toggle("dark-mode");
+            }
+        </script>
         <script defer src="assets/js/script.js"></script>
       
     </body>
