@@ -111,10 +111,22 @@ function fetchWeather(city) {
         });
 }
 
+// Clothing Arrays in Variables depedning on temp
+// Hot to Cold
+let hotWeather = ["shorts", "dresses", "skirts", "sun glasses", "swimwear", "rompers", "sandals", "sunscreen"];
+let warmWeather = ["tops", "Sunglasses", "sandals", "shorts", "dresses", "skirts", "swimwear", "rompers", "sunscreen"];
+let coolWeather = ["Long Sleeve","shorts", "sweater", "boots", "scarf", "beanie", "coat", "Blazer"];
+let coldWeather = ["jacket", "Sweater", "boots", "scarf", "gloves", "beanie", "coat", "Long-Sleeve", "Joggers"];
+let freezingWeather = ["Jacket", "Sweater", "boots", "scarf", "gloves", "beanie", "coat", "Long Sleeve", "Joggers"];
+
 // Function to display the weather data
 function displayWeather(data) {
+    // Get the temperature from the data
     const temp = data.main.temp
-    document.querySelector("#city-name").textContent = data.name
+    console.log(temp)
+
+    // Display the city name and temperature
+    document.querySelector("#city-name").textContent = data.name;
     document.querySelector("#temp").textContent = temp + "°F"
     
     // Get clothes title element to display when clothes are shown
@@ -122,57 +134,71 @@ function displayWeather(data) {
 
     // // If statements for the different temperatures per city 
     if (temp >= 90) {
-        // Loops for specific clothes depending on the temperature - Hot
+        // Temperature - Hot'
+
+        // Display the clothes title
         div.style.display = 'block';
-        fetchClothes(["tops", "shorts", "dresses", "skirts", "swimwear", "rompers", "sandals", "sunscreen"])
+
+        displayClothes(data, hotWeather)
 
         // Display weather console text
         document.querySelector("#weather-text").textContent = "Too Hot to wear clothes";
         console.log("Too Hot to wear clothes")
 
     } else if (temp <= 90 && temp >= 75) {
-        // Loops for specific clothes depending on the temperature  - Warm
+        // Temperature  - Warm
+
+        // Display the clothes title
         div.style.display = 'block';
-        fetchClothes(["tops", "Sunglasses", "sandals", "shorts", "dresses", "skirts", "swimwear", "rompers", "sunscreen"])
+
+        displayClothes(data, warmWeather)
 
         // Display weather console text
         document.querySelector("#weather-text").textContent = "Perfect weather to wear a tank top, shorts, and sandals";
         console.log("Perfect weather to wear a tank top, shorts, and sandals")
 
     } else if (temp <= 75 && temp>= 50) {
-        // Loops for specific clothes depending on the temperature  - Cool
+        // Temperature  - Cool
+
+        // Display the clothes title
         div.style.display = 'block';
-        fetchClothes(["Long Sleeve","shorts", "sweater", "boots", "scarf", "beanie", "coat", "Blazer"])
-      
+        
+        displayClothes(data, coolWeather)
+
         // Display weather console text
         document.querySelector("#weather-text").textContent = "Perfect weather to wear a t-shirt and shorts";
         console.log("Perfect weather to wear a long sleeve shirt and shorts")
 
     } else if (temp <= 50 && temp>= 32) {
-        // Loops for specific clothes depending on the temperature - Cold
+        // Temperature - Cold
+
+        // Display the clothes title
         div.style.display = 'block';
-        fetchClothes (["jacket", "Sweater", "boots", "scarf", "gloves", "beanie", "coat", "Long-Sleeve", "Joggers"])
+        
+        displayClothes (data, coldWeather)
 
         // Display weather console text
         document.querySelector("#weather-text").textContent = "Perfect weather to wear jackets, jeans and sweaters";
         console.log("Perfect weather to wear jackets, jeans and sweaters")
         
-
     } else {
-        // Loops for specific clothes depending on the temperature - Very Cold
+        // Temperature - Freezing
         
-        fetchClothes(["jacket", "sweater", "boots", "scarf", "gloves", "beanie", "coat", "long sleeve", "snow"])
+        // Display the clothes title
+        div.style.display = 'block';
+
+        displayClothes(data, freezingWeather)
 
         // Display weather console text
         document.querySelector("#weather-text").textContent = "Too cold to not wear clothes";
         console.log("Too cold to not wear clothes")
-        div.style.display = 'block';
+        
     }
     
 }
+
 // Event listener for the search button
 searchBtn.addEventListener("click", handleSearchSubmit)
-
 
 // Start of Clothes API
 // --------------------------------------------------------------------------->
@@ -190,64 +216,93 @@ const options = {
     }
 };
 
-// Function to fetch the clothes data from the API
-function fetchClothes(clothes, gender) {
+// Function to Fetch and Display the clothes
+function displayClothes(data, clothes) {
+    console.log(data);
+    console.log(clothes);
 
+    // Get the dropdown container
+    const collapsibleContainer = document.querySelector("#collapsible-container");
 
-    for (let i = 0; i < clothes.length; i++) {
+    // Loop through the clothes array  
+    for(let i = 0; i < clothes.length; i++){
         const apiUrlClothes = `https://apidojo-forever21-v1.p.rapidapi.com/products/search?query=${clothes[i]}&rows=20&start=0`;
-    
-
+        
+        // Fetch the clothes data
         fetch(apiUrlClothes, options)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
+
+                // Create a collapsible section for each clothes item
+                const section = document.createElement("div");
+                section.className = "collapsible-section";
+
+                // Create a button for the section title
+                const button = document.createElement("button");
+                button.className = "collapsible-button";
+                button.textContent = clothes[i];
+
+                // Add a click event listener to the button
+                button.addEventListener("click", function() {
+                    // Get the content associated with this button
+                    const content = this.nextElementSibling;
+
+                    // If the content is already expanded, collapse it
+                    if (content.style.maxHeight){
+                        content.style.maxHeight = null;
+                    } else { // If the content is collapsed, expand it
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } 
+                });
+
+                // Create a div for the content of the section
+                const content = document.createElement("div");
+                content.className = "collapsible-content";
+
+                // Loop over the data.response.docs to create cards
                 for (let i = 0; i < data.response.docs.length; i++) {
-                    console.log(data.response.docs[i]);
+                    // Create a card element
+                    const card = document.createElement("div");
+                    const clothesElement = document.createElement("p");
+
+                    // Create a title element
+                    clothesElement.className = "clothes-title";
+                    clothesElement.textContent = data.response.docs[i].title;
+
+                    // Create an image element
+                    const clothesImage = document.createElement("img");
+                    clothesImage.src = data.response.docs[i].thumb_image;
+                    clothesImage.style.width = "100%";
+
+                    // Create a price element
+                    const clothesPrice = document.createElement("p");
+                    clothesPrice.textContent = "$" + data.response.docs[i].price;
+
+                    // Create a url element to buy the clothes
+                    const urlElement = document.createElement("a");
+                    urlElement.href = data.response.docs[i].url;
+                    urlElement.textContent = "Buy Now";
+                    urlElement.target = "_blank"; // Opens the link in a new tab
+
+                    // Append the elements to the card
+                    card.append(clothesElement, clothesImage, clothesPrice, urlElement);
+
+                    // Append the card to the content div
+                    content.appendChild(card);
                 }
-                displayClothes(data);
+
+                // Append the button and content to the section
+                section.appendChild(button);
+                section.appendChild(content);
+
+                // Append the section to the dropdown container
+                collapsibleContainer.appendChild(section);
             })
             .catch(error => {
                 console.log('There was a problem with the fetch operation: ' + error.message);
             });
-        }
-}
-
-// Function to display the clothes
-function displayClothes(data) {
-    console.log(data);
-
-    // Loop over the data.response.docs
-    for (let i = 0; i < data.response.docs.length; i++) {
-        console.log(data.response.docs[i]);
-        
-        // Create a card element
-        const card = document.createElement("div");
-        const clothesElement = document.createElement("p");
-       
-        clothesElement.textContent = data.response.docs[i].title;
-        // document.querySelector("#clothes").appendChild(clothesElement);
-        // Create an image element
-        const clothesImage = document.createElement("img");
-
-        clothesImage.src = data.response.docs[i].thumb_image;
-        clothesImage.style.width = "100%";
-
-        // Create a price element
-        const clothesPrice = document.createElement("p");
-        clothesPrice.textContent = "$" + data.response.docs[i].price;
-
-        // Create a url element to buy the clothes
-        const urlElement = document.createElement("a");
-        urlElement.href = data.response.docs[i].url;
-        urlElement.textContent = "Buy Now";
-        urlElement.target = "_blank"; // Opens the link in a new tab
-
-        // Append the elements to the card
-        card.append(clothesElement, clothesImage, clothesPrice, urlElement);
-        document.querySelector("#clothes-cards").appendChild(card);
     }
 }
 
 // End of Clothes API
-// --------------------------------------------------------------------------->
