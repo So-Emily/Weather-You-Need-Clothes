@@ -4,7 +4,7 @@
 
 A weather web application that tourists or vacationers enter a City or Zip-Code and they recieve clothes options depending on the temperature of that place.
 
-Built to help people know what to pack.
+Built to help people know what to pack when going to a new place.
 
 ![website-start](https://github.com/So-Emily/Weather-You-Need-Clothes/assets/10500315/8e3ffb34-bb8b-4bf5-b504-85347d0688b6)
 
