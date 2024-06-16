@@ -4,10 +4,13 @@
 
 ## Description
 
-A weather app that depending on the temperature of the city you are looking at it recommends clothes for that weather.
+A weather web application that tourists or vacationers enter a City or Zip-Code and they recieve clothes options depending on the temperature of that place.
 
-Used by people going on vacation to help know what to pack
+Built to help people know what to pack.
 
+![website-start](https://github.com/So-Emily/Weather-You-Need-Clothes/assets/10500315/8e3ffb34-bb8b-4bf5-b504-85347d0688b6)
+
+![website-input-entered](https://github.com/So-Emily/Weather-You-Need-Clothes/assets/10500315/6789a731-9af5-4feb-adf4-4b71945b1db2)
 
 ## User Story
 
