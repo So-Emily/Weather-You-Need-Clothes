@@ -72,22 +72,82 @@
     width: 20%;
 }
 
-/* Flexing the display weather clothes cards - all cards together */
-#clothes-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
 }
 
-/* Styling for the individual clothes cards */
-#clothes-cards div {
-    margin: 10px;
+.collapsible-content.active {
+    max-height: none; /* Or set to a specific value */
+}
+
+/* Style the collapsible section */
+.collapsible-section {
+    border: 1px solid #f2f2f2;
     padding: 10px;
-    border: 1px solid black;
+    margin-bottom: 10px;
     border-radius: 5px;
+    background-color: white;
+}
+
+/* Style the collapsible button */
+.collapsible-button {
+    background-color: rgb(50, 172, 172) ;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 30px;
+    transition: 0.4s;
     text-align: center;
-    background-color: rgb(255, 255, 255);
-    /* max-width: 30%; */
+    border-radius: 5px;
+    text-shadow: 1px 1px 1px rgb(27, 27, 27);
+}
+
+/* Style the collapsible button on hover */
+.collapsible-button::first-letter {
+    text-transform: uppercase;
+}
+
+/* Style the collapsible content */
+.collapsible-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 18px;
+    overflow: hidden;
+    background-color: white;
+}
+
+/* Style the collapsible content div */
+.collapsible-content div {
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 100%; 
+    max-width: 400px;
+    border: 1px solid #000;
+    padding: 10px;
+    margin: 10px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+/* Style the collapsible content div title */
+.clothes-title {
+    font-size: 25px;
+    text-align: center;
+    text-decoration: underline;
+}
+
+/* Style the collapsible content div image */
+.collapsible-content img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* Styling for the history buttons */
@@ -95,7 +155,7 @@
     border-radius: 5px;
     align-items: center;
     margin: 1.5px;
-    padding: 2px;
+    padding: 3.5px;
     background-color: rgb(255, 255, 255);
 }
 
@@ -107,7 +167,6 @@
     
 }
 
-
 /* ------------------------------------------------------------ */
 /* Media Querie Styling */
 @media screen and (max-width: 2200px) {
@@ -116,26 +175,27 @@
         object-fit: cover;
         z-index: -1;
     }
-
 }
 
-@media screen and (max-width: 1000px) {
-    #clothes-cards div {
-        width: 40%;
+@media screen and (max-width: 1350px) {
+    #collapsible-content div {
+        width: 50%;
+        max-width: 300px;
     }
-
 }
 
 @media screen and (max-width: 600px) {
-    #clothes-cards div {
-        width: 80%;
+    #colapsible-content div{
+        width: 50%;
+        max-width: 200px;
     }
 }
 
 @media screen and (max-width: 400px)
 {
-    #clothes-cards div {
-        width: 100%;
+    #colapsible-content div{
+        width: 25%;
+        max-width: 150px;
     }
     
 }
