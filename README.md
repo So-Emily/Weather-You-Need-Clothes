@@ -1,5 +1,7 @@
 # Weather Drip
 
+![Screenshot 2024-06-16 at 11 12 20 AM (2)](https://github.com/So-Emily/Weather-You-Need-Clothes/assets/166947418/17cfc4e6-35d8-42c7-9636-28d14dddb022)
+
 ## Description
 
 A weather app that depending on the temperature of the city you are looking at it recommends clothes for that weather.
@@ -18,7 +20,7 @@ then be recommended the type of clothing I should wear/bring with me
 SO THAT planning my trips and vacations will be easier
 
 
-## Acceptnce Criteria
+## Acceptance Criteria
 
 GIVEN a webpage with a weather form and dynamic background
 WHEN I search for a city I am traveling to
