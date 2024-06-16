@@ -1,7 +1,5 @@
 # Weather Drip
 
-![Screenshot 2024-06-16 at 11 12 20 AM (2)](https://github.com/So-Emily/Weather-You-Need-Clothes/assets/166947418/17cfc4e6-35d8-42c7-9636-28d14dddb022)
-
 ## Description
 
 A weather web application that tourists or vacationers enter a City or Zip-Code and they recieve clothes options depending on the temperature of that place.
