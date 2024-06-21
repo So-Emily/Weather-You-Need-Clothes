@@ -7,7 +7,7 @@
 const apiKey = "7ab439372a6b7834b1058543aced3bee"
 const searchInput = document.querySelector("#search-input")
 const searchBtn = document.querySelector("#search-btn")
-const cityHistory = JSON.parse(localStorage.getItem("cityHistory")) || []
+const cityHistory = JSON.parse(localStorage.getItem("cityHistory")) || [] // Get the city history from the local storage if left side is null, then use the right side
 
 // Event listener for the clear history button
 // When the clear history button is clicked, the cityHistory array is cleared and the local storage is updated
@@ -32,12 +32,28 @@ document.querySelector("#clear-btn").addEventListener("click", function() {
 // The cityHistory array is saved to the local storage
 // The renderCityHistory function is called to update the UI
 function saveCity(city) {
-    if (cityHistory.includes(city)) return
-    cityHistory.push(city)
-    localStorage.setItem("cityHistory", JSON.stringify(cityHistory))
-    renderCityHistory()
+    // Check if the city is proper. This is a placeholder condition.
+    // You might need to replace it with an actual check, e.g., an API call to verify the city.
+    if (!city || city.trim() === "") {
+        // Show the modal
+        document.getElementById('invalidCityModal').style.display = 'block';
+        return; // Exit the function if the city is not proper
+    }
+
+    // Your existing code to save the city if it's proper
 }
 
+// Close the modal when the user clicks on <span> (x)
+document.querySelector('.modal .close').addEventListener('click', function() {
+    document.getElementById('invalidCityModal').style.display = 'block';
+});
+
+// Optionally, close the modal when the user clicks anywhere outside of the modal
+window.onclick = function(event) {
+    if (event.target == document.getElementById('invalidCityModal')) {
+        document.getElementById('invalidCityModal').style.display = 'none';
+    }
+};
 // Function to render the city history
 // The cityHistory element is selected
 // The innerHTML of the cityHistory element is cleared
@@ -85,10 +101,21 @@ if (cityHistory.length > 0) {
 function handleSearchSubmit() {
     event.preventDefault();
     const city = searchInput.value
-    if (!city) return
+    if (!city) {
+        document.getElementById('error-message').textContent = "Please enter a city or zip code"
+    }
     fetchWeather(city)
-    searchInput.value = ""
+    searchInput.value = "";
 }
+document.querySelector('.close').addEventListener('click', function() {
+    document.getElementById('cityModal').style.display = 'none';
+});
+window.onclick = function(event) {
+    if (event.target == document.getElementById('cityModal')) {
+        document.getElementById('cityModal').style.display = 'none';
+    }
+};
+
 
 // Event listener for the search form
 // When the search form is submitted, the handleSearchSubmit function is called
