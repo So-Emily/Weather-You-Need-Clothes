@@ -99,7 +99,7 @@ if (cityHistory.length > 0) {
 // The fetchWeather function is called with the city as an argument
 // The search input value is set to an empty string
 function handleSearchSubmit() {
-    event.preventDefault();
+    preventDefault();
     const city = searchInput.value
     if (!city) {
         document.getElementById('error-message').textContent = "Please enter a city or zip code"
@@ -126,6 +126,25 @@ document.getElementById('search-form').addEventListener('submit', function(event
     event.preventDefault();
     location.reload();
     handleSearchSubmit();
+});
+
+document.getElementById('search-form').addEventListener('submit', function(event) {
+  var input = document.getElementById('search-input').value;
+  var zipCodePattern = /^\d{5}$/;
+  if (!zipCodePattern.test(input)) {
+    event.preventDefault();
+    var modal = document.getElementById('myModal');
+    var span = document.getElementsByClassName('close')[0];
+    modal.style.display = 'block';
+    span.onclick = function() {
+      modal.style.display = 'none';
+    }
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = 'none';
+      }
+    }
+  }
 });
 
 // Function to fetch the weather data
