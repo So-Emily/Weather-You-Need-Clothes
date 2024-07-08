@@ -44,16 +44,16 @@ function saveCity(city) {
 }
 
 // Close the modal when the user clicks on <span> (x)
-document.querySelector('.modal .close').addEventListener('click', function() {
-    document.getElementById('invalidCityModal').style.display = 'block';
-});
+// document.querySelector('.modal .close').addEventListener('click', function() {
+//     document.getElementById('invalidCityModal').style.display = 'block';
+// });
 
-// Optionally, close the modal when the user clicks anywhere outside of the modal
-window.onclick = function(event) {
-    if (event.target == document.getElementById('invalidCityModal')) {
-        document.getElementById('invalidCityModal').style.display = 'none';
-    }
-};
+// // Optionally, close the modal when the user clicks anywhere outside of the modal
+// window.onclick = function(event) {
+//     if (event.target == document.getElementById('invalidCityModal')) {
+//         document.getElementById('invalidCityModal').style.display = 'none';
+//     }
+// };
 // Function to render the city history
 // The cityHistory element is selected
 // The innerHTML of the cityHistory element is cleared
